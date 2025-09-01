@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import connectDb from "./config/connectDb.js"
 import connectCloudinary from "./config/cloudinary.js"
+import adminRouter from "./routes/adminRoute.js"
 
 dotenv.config()
 
@@ -24,8 +25,10 @@ app.get("/", (req, res) => {
     res.send("Hello Server!")
 })
 
-// api config
+// api config endpoints
+app.use("/api/v1/admin", adminRouter )
 
+// server listen
 app.listen(PORT, () => {
     console.log("Server is running at port http://localhost:8080")
 })
